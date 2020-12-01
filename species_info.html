@@ -1,0 +1,580 @@
+<!DOCTYPE: html>
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Species info</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+	<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+	<script src="taxon_info.json" type="text/javascript"></script>
+	<script src="seed_accessions.json" type="text/javascript"></script>
+	<script src="seed_collections.geojson" type="text/javascript"></script>
+	<script>
+		//alert('Page working');
+		//alert("Item1".split(','));
+	</script>
+	<style>
+		#leaflet-map{
+			height: 500px;
+			width: 700px;
+		}
+	
+	</style>
+</head>
+
+<body>
+
+<header>
+	<img class="top-banner" src="banner/Banner2.png"/>
+</header>
+
+<nav class="top-nav" id="navBar">
+  <a href="index.html">Home</a>
+  <a href="species_search.html">Search</a>
+	<div class="dropdown">
+		<button class="dropbtn">Browse
+			<img src="icons/dwn_arrA1.png" height="10px" width="15px"></img>
+		</button>
+		<div class="dropdown-content">
+			<a href="browse_families.html">Browse Families</a>
+			<a href="browse_genera.html">Browse Genera</a>
+		</div>
+	</div>
+  <a href="gallery.html" target="_blank">Image Gallery</a>
+  <a href="http://eflora.nt.gov.au/home" target="_blank">NT Flora</a>
+  <a class="icon" href="#">&#9776;</a>
+</nav>
+
+<div id="heading"></div>
+<div class="main-content">
+<div id="spInfo"></div>
+<div id="map-container">
+<div class="map" id="leaflet-map"></div>
+<div id="below-map">
+<button id="reset-btn" onclick="resetMap()">Reset map extent</button><img id="legend" src="icons/legend-grey.png"></img>
+</div>
+</div>
+</div></br>
+<div id="spGallery"></div><br>
+<div id="accessions"></div><br>
+
+<footer>
+	<p>© Ben Wirf 2020</p>
+</footer>
+
+<script>
+	const params = new URLSearchParams(window.location.search);
+	var taxonId = String(params).split("=")[1];
+	var taxonInfo = data;
+	var accnInfo = accn_data;
+	var heading = document.getElementById("heading");
+	var infoContainer = document.getElementById("spInfo");
+	var galleryContainer = document.getElementById("spGallery");
+	
+	var material = "GMCAT";
+	var family = "FAMILY";
+	var genus = "GENUS";
+	var species = "SP1";
+	var author = "AUTHOR1";
+	var rank1 = "RANK1";
+	var species2 = "SP2";
+	var author2 = "AUTHOR2";
+	var taxonName = "TAXON_NAME";
+	var form = "FORM";
+	var description = "DESC";
+	var habitat = "HABITAT";
+	var associatedSpp = "ASSOC_SP";
+	var commonName = "VERNACULAR";
+	var languageName = "LANGUAGE";
+	var uses = "USES";
+	var height = "PLANTHT";
+	var distribution = "DISTRIBUTION";
+	var nativeStatus = "NT_NATIVE";
+	var endemicStatus = "NT_ENDEMIC";
+	var tpwca = "TPWCA";
+	var epbc = "EPBC";
+	var images = "IMAGELIST";
+	var caption = "CAPTION";
+	var attribution = "ATTRIBUTION";
+	var id = "TAXON_ID";
+	var barIcon = document.getElementsByClassName("icon")[0];
+	
+	barIcon.addEventListener("click", showResponsiveMenu);
+
+	loadInfo();
+	
+	loadImages();
+	
+	findCollections();
+
+	
+	function loadInfo(){
+		var infoContent = "";
+		for (i=0; i<taxonInfo.length; i++){
+			if (taxonInfo[i][id] == taxonId){
+				//alert("Ping")
+				var item = taxonInfo[i];
+				heading.innerHTML = "<h2 id='fullName'>"+item[family]+" <i>"+item[genus]+" "+item[species]+" </i>"+item[author]+" "
+				+item[rank1]+" <i>"+item[species2]+"</i> "+item[author2]+"</h2><br>";
+				
+				infoContent += "<p><b>Description:</b> "+item[description]+"</p>";
+				infoContent += "<p><b>Habitat:</b> "+item[habitat]+"</p>";
+				infoContent += "<p><b>Recorded species associations:</b> <i>"+item[associatedSpp]+"</i></p>";
+				infoContent += "<p><b>Distribution:</b> "+item[distribution]+"</p>";
+				infoContent += "<p><b>Common name:</b> "+item[commonName]+"</p>";
+				infoContent += "<p><b>Native status:</b> "+item[nativeStatus]+"; "+item[endemicStatus]+"</p>";
+				infoContent += "<p><b>Conservation status:</b> "+item[tpwca]+"</p>";
+				if (item[epbc] != ""){
+					infoContent += "<p><b>EPBC listing:</b> "+item[epbc]+"</p>";
+				}
+			}
+		}
+		infoContainer.innerHTML = infoContent;
+	}
+	
+	function loadImages(){
+		galleryContent = "";
+		for (i=0; i<taxonInfo.length; i++){
+			if (taxonInfo[i][id] == taxonId){
+				var item = taxonInfo[i];
+				if (item[images] != ""){
+					var imageList = item[images].split(';');
+					var captionList = item[caption].split(';');
+					var attributionList = item[attribution].split(';');
+					//alert(imageList.length);
+					for (j=0; j<imageList.length; j++){
+						galleryContent += "<div id='fig'>";
+						galleryContent += "<a target='_blank' href='./images/"+item[taxonName]+"/"+imageList[j]+"'>";
+						galleryContent += "<div class='thumbnail-area'>";
+						galleryContent += "<img class='img' src='./images/"+item[taxonName]+"/"+imageList[j]+"' "+"height='200px' width='auto'></img>";
+						galleryContent += "</div>";
+						galleryContent += "</a></br>";						
+						galleryContent += "<div id='caption'>"+captionList[j]+" | Image: "+attributionList[j]+"</div>";
+						galleryContent += "</div>";
+					}
+				}
+			}
+		}
+		galleryContainer.innerHTML = galleryContent;
+	}
+	
+	function findCollections(){
+		var accnList = "";
+		var collCount = 0;
+		for(i=0; i<accnInfo.length; i++){
+			if(accnInfo[i]["TAXON_ID"]==taxonId){
+				collCount++;
+				accnList+="<p><a href='accession_details.html?accession="+accnInfo[i]["ACCESSION"]+"' target='_blank'><img id='seed-packet' src='icons/seed-packet.png'></img>"+accnInfo[i]["ACCESSION"]+"</a></p>";
+			}
+		}
+		if(collCount == 1){
+			document.getElementById("accessions").innerHTML = "<h2>1 seed collection</h2>";
+		}
+		else{
+			document.getElementById("accessions").innerHTML = "<h2>"+collCount+" seed collections</h2>";
+		}
+		document.getElementById("accessions").innerHTML += accnList;
+	}
+
+	//Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon
+	function showResponsiveMenu(){
+		var x = document.getElementById("navBar");
+		x.classList.toggle("top-nav-responsive");
+	}
+		
+/***************************************************Leaflet map*******************************************************/
+
+	var options = {
+		center: [-15.3, 132.8],
+		zoom: 6
+	};
+	
+	var myMap = L.map("leaflet-map", options);
+	
+	var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+	});
+			
+	var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	});
+	
+	Esri_WorldTopoMap.addTo(myMap);
+	
+	var basemaps = {			
+		"Esri World Topo": Esri_WorldTopoMap,
+		"Esri World Imagery": Esri_WorldImagery
+	}			
+	
+	L.control.layers(basemaps).addTo(myMap);
+	
+	myMap.invalidateSize();
+	
+	var seed_style = {
+		radius: 5,
+		color: "black",
+		fillColor: "red",
+		weight: 1,
+		opacity: 1,
+		fillOpacity: 1,		
+	}
+			
+	var collections = L.geoJson(seedCollections, {filter:applyFilter, pointToLayer: stylePoints});
+	collections.addTo(myMap);
+	
+	
+	function applyFilter(feature){
+		if (feature.properties.TAXON_ID == taxonId){
+			return true;
+		}
+	}
+	
+	function stylePoints(feature, latlng){
+		var marker;
+		var accession = feature.properties.ACCESSION;
+		var taxon_name = feature.properties.TAXON_NAME;		
+		var date = feature.properties.COLL_DATE;		
+		var voucher_no = feature.properties.NUMBER;		
+		var collector = feature.properties.COLLECTOR;		
+		var x = feature.properties.LONG;		
+		var y = feature.properties.LAT;		
+		var gazetteer = feature.properties.GAZETTEER;		
+		var locality = feature.properties.LOCNOTES;		
+		var tpwca_status = feature.properties.TPWCA;		
+		var epbc = feature.properties.EPBC;
+		var material = feature.properties.GMCATEGORY;
+		var project = feature.properties.PROJNAME;
+		
+		marker = L.circleMarker(latlng, seed_style);
+
+		
+		var popup_content = "<p>";
+		popup_content += "Accession ID: <a href='accession_details.html?accession="+accession+"' target='_blank'>"+accession+"</a><br>";
+		popup_content += "Taxon Name: "+taxon_name+"<br>";
+		popup_content += "Collection Date: "+date+"<br>";
+		popup_content += "Collector: "+collector+"<br>";
+		popup_content += "Voucher ID: "+voucher_no+"<br>";
+		popup_content += "Nearest Named Place: "+gazetteer+"<br>";			
+		popup_content += "</p>";			
+		marker.bindTooltip(String(taxon_name)).openTooltip();
+		marker.bindPopup(popup_content).openPopup();
+		return marker;
+	}
+	
+	function resetMap(){
+		myMap.setView([-15.3, 132.8], 6);
+	}
+
+/*************************************************End of Leaflet map*******************************************************/
+
+</script>
+
+<style>
+
+html, body{
+	margin: 0;
+	height: 100%;
+}
+
+.top-banner{
+	width: 100%;
+}
+
+/*************************************Navbar style************************************/
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 18px;
+	max-height: 15px;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.top-nav {
+  background-color: black;
+  overflow: hidden;
+	font-family: Sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.top-nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 17px;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #88b5ac;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.top-nav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.top-nav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links */
+@media(max-width: 600px) {
+  .top-nav a, .dropdown .dropbtn {
+    display: none;
+  }
+  .top-nav a.icon {
+    float: right;
+    display: block;
+		max-height: 19px;
+  }
+
+  .top-nav-responsive {position: relative;}
+  .top-nav-responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-nav-responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .top-nav-responsive .dropdown {float: none;}
+  .top-nav-responsive .dropdown-content {position: relative;}
+  .top-nav-responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+	
+	#spInfo, #map-container{
+		min-width: 85%;
+	}
+	
+}
+
+/*******************************End of navbar style************************************/
+
+#heading, #spInfo, #accessions{margin-left: 25px;}
+
+#heading{
+	margin-top: 35px;
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #661013;
+}
+
+.main-content{
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+#spInfo, #map-container{
+	float: left;
+}
+
+#spInfo{
+	border: 1px solid black;
+	margin-bottom: 15px;
+	background-color: #b4dbc6;
+	width: 30%;
+	padding: 10px;
+	font-family: sans-serif;
+	font-size: 16px;
+}
+
+#map-container{
+	width: 700px;
+	height: 540px;
+	margin: 0px 10px 15px 25px;
+	padding: 0;
+	border: 1px solid black;
+}
+
+.map img{
+	height: 100%;
+}
+
+#below-map{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: rgb(200, 200, 200);
+}
+
+#legend{
+	height: 28px;
+	margin-right: 10px;
+}
+
+#reset-btn{
+	margin: 10px;
+}
+
+#spGallery{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	padding: 10px;
+	margin-top: 0;
+	margin-right: 10px;
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+#fig{
+	padding: 0;
+	margin: 10px;
+}
+
+#caption{
+	margin: 1px;
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+.thumbnail-area{
+	display: flex;
+	float: left;
+	border: 2px solid black;
+	height: 200px;
+	width: 350px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	justify-content: center;
+	background: gray;
+	transition: all ease-in-out 250ms;
+}
+
+.thumbnail-area.img{
+	display: flex;
+	max-height: 196px;
+	max-width: 346px;
+	border: 2px solid gray;
+	justify-content: center;
+}
+
+.thumbnail-area:hover{
+	transform: scale(1.05);
+	box-shadow: 5px 5px 10px grey;
+	/*transition: ease-in-out 250ms;*/
+}
+
+#accessions{
+	border: 1px solid black;
+	text-align: center;
+	width: 90%;
+	font-family: sans-serif;
+	background-color: #b4dbc6;
+}
+
+#accessions a{
+	color: blue;
+}
+
+#seed-packet{
+	height: 30px;
+	margin-right: 5px;
+}
+
+#accessions:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+footer{
+	margin: 25px;
+	text-align: center;
+}
+
+@media(max-width: 1000px){
+	#leaflet-map{
+	height: 93%;
+	width: 100%;
+	}
+}
+		
+</style>
+</body>
+
+</html>

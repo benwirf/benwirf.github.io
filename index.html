@@ -1,0 +1,398 @@
+<!DOCTYPE: html>
+
+<html>
+<head>
+	<title>GBDBG Seed Bank</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		//alert('Working');
+	</script>
+</head>
+
+<body>
+<img class="banner" src="banner/Banner2.png">
+
+<nav class="top-nav" id="navBar">
+  <a href="#home" class="active">Home</a>
+  <a href="species_search.html" target="_blank">Search</a>
+	<div class="dropdown">
+		<button class="dropbtn">Browse
+			<img src="icons/dwn_arrA1.png" height="10px" width="15px"></img>
+		</button>
+		<div class="dropdown-content">
+			<a href="browse_families.html" target="_blank">Browse Families</a>
+			<a href="browse_genera.html" target="_blank">Browse Genera</a>
+		</div>
+	</div>
+  <a href="gallery.html" target="_blank">Image Gallery</a>
+  <a href="http://eflora.nt.gov.au/home" target="_blank">NT Flora</a>
+  <a class="icon" href="#">&#9776;</a>
+</nav>
+
+<h1 class="heading">Conservation Seed Banking in the NT</h1>
+
+<h2 class="page-desc">
+	A collection of information and data from
+	the George Brown Darwin Botanic Gardens conservation seed bank
+</h2>
+
+<div class="slideshow-nav-container">
+	<div class="side-nav">
+			
+			
+			<a href="species_search.html" target="_blank">Search</a>
+			<a href="partners.html" target="_blank">Partners</a>
+			<a href="links.html" target="_blank">Links</a>
+			<a href="contacts.html" target="_blank">Contact</a>
+	</div>
+	<div class="pan1" id="image-row"></div>
+</div>
+
+<div class="main-panel">
+	
+	<p>
+	Since 2015 George Brown Darwin Botanic Gardens Seed Bank has been working to support 
+	biodiversity conservation in the Northern Territory through securing seed collections
+	of native flora in long term conservation storage. <br/>
+	</p>
+	
+	<p>The seed bank holds:</p>
+	
+	<p>
+	
+		<ul class="stat-list-main">
+			<li>Around 460 collections in long term conservation storage</li>
+			<li>360 species represented</li>
+			<li>78 species of conservation significance* including:</li>						
+		</ul></br>
+		<ul class="stat-list-sub">
+			<li>28 Data Deficient</li>
+			<li>40 Near Threatened</li>
+			<li>8 Vulnerable</li>
+			<li>1 Endangered </li>
+			<li>1 Critically Endangered </li>
+			<li>7 EPBC** Listed species</li>
+		</ul>
+	
+	</p>
+	
+	<p id="asterisks">
+	* Listed under the Territory Parks & Wildlife Conservation Act</br>
+	** Environmental Protection & Biodiversity Conservation Act
+	</p>
+</div>
+
+<footer>
+	<p>© Ben Wirf 2020</p>
+</footer>
+	
+<script>
+var barIcon = document.getElementsByClassName("icon")[0];
+var myRow = document.getElementById("image-row");
+//var scrollBtn = document.getElementById("test-btn");
+var imageRoll = setInterval(rotateImages, 3500);
+var counter = 1;
+
+barIcon.addEventListener("click", showResponsiveMenu);
+
+rotateImages();
+
+
+function rotateImages(){
+	var content = "";
+	idx = counter;		
+	for(i=1; i<5; i++){
+		if(idx == 20){
+			idx = 1;
+		}
+		content += "<ul class='image-list'>";
+		content += "<li><img src='"+"./slideshow_images/IMG_"+idx+".jpg'></img></li>";
+		content += "</ul>";
+		idx+=1;
+	}
+	myRow.innerHTML = content;
+	if(counter == 19){
+		counter = 1;
+	}
+	else{
+		counter += 1;
+	}
+}
+
+function showResponsiveMenu(){
+	var x = document.getElementById("navBar");
+	x.classList.toggle("top-nav-responsive");
+}
+
+</script>
+
+<style>
+
+/*body{
+	background-image: url("backgrounds/DSC_0516.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}*/
+
+
+body, html{
+	padding: 0;
+	margin: 0;
+}
+
+.banner{
+	width: 100%;
+}
+
+/*************************************Navbar style************************************/
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 18px;
+	max-height: 15px;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.top-nav {
+  background-color: black;
+  overflow: hidden;
+	font-family: Sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.top-nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 17px;
+}
+
+/* Use active class selector to highlight the current page */
+.active {
+  background-color: #b4dbc6;
+	color: black !important;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.top-nav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.top-nav a:hover, .dropdown:hover .dropbtn {
+  background-color: #888;
+  color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links */
+@media(max-width: 600px) {
+  .top-nav a, .dropdown .dropbtn {
+    display: none;
+  }
+  .top-nav a.icon {
+    float: right;
+    display: block;
+		max-height: 19px;
+  }
+
+  .top-nav-responsive {position: relative;}
+  .top-nav-responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-nav-responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .top-nav-responsive .dropdown {float: none;}
+  .top-nav-responsive .dropdown-content {position: relative;}
+  .top-nav-responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/*******************************End of navbar style************************************/
+
+.heading{
+	font: 42px Verdana, sans-serif;
+	color: #661013;
+	text-align: center;
+	/*text-shadow: 2px 2px 5px grey;*/
+}
+
+.page-desc{
+	font: 20px Verdana, sans-serif;
+	text-align: center;	
+}
+
+/***************************Side nav and image slideshow style***************************/
+
+.slideshow-nav-container{
+	display: flex;
+}
+
+.side-nav{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
+	width: 10%;
+	min-width: 100px;
+	height: 245px;
+	background-color: black;
+}
+
+.side-nav a{
+	text-decoration: none;
+	padding: 10px;
+	font-family: Sans-serif;
+	font-size: 18;
+	color: white;
+}
+
+.side-nav a:hover{
+	background-color: #777;
+}
+
+#image-row{
+	width: 90%;
+	background-color: #222;
+	text-align: center;
+	overflow: hidden;
+}
+
+.pan1{
+	padding-top: 5px;
+	height: 240px;
+}
+
+.image-list{
+	padding: 8px;
+	display: inline-block;
+	list-style: none;
+}
+
+.image-list img{
+	height: 190px;
+	width: 210px;
+	margin: auto;
+}
+
+/************************End of side nav and image slideshow style***********************/
+
+.main-panel{
+	width: 75%;
+	margin: 25px auto 25px auto;
+	/*border: 2px solid black;*/
+	/*border-radius: 5px;*/
+	padding: 10px 20px 10px 20px; /*Top Right Bottom Left*/
+	font: 16px Verdana, sans-serif;
+	/*background-color: rgb(230, 230, 230);*/
+}
+
+.stat-list-main{
+	list-style-type: disc;
+}
+
+.stat-list-sub{
+	list-style-type: circle;
+	margin-left: 40px;
+}
+
+#asterisks{
+	font: 11px Verdana, sans-serif;
+}
+
+/*******************************************************************************/
+
+.main-panel:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+footer{
+	margin: 25px;
+	text-align: center;
+}
+
+</style>
+
+</body>
+</html>

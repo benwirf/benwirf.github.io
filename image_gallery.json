@@ -1,0 +1,324 @@
+var gallery_data = [
+ {
+   "FILENAME": "Acacia_Jim_Jim_Falls.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Acacia_tolmerensis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "Allosyncarpia_ternata.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "Borya_jabirabela.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Brachychiton_spectabilis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "Dicarpidium_Arnhem_Land.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "DSC_0010.jpg",
+   "CAPTION": "Camping at Gordy Springs, Wave Hill Station",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0014.jpg",
+   "CAPTION": "Camping at Gordy Springs, Wave Hill Station",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0015.jpg",
+   "CAPTION": "Hibiscus symonii",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2015
+ },
+ {
+   "FILENAME": "DSC_0016.jpg",
+   "CAPTION": "Camping at Gordy Springs, Wave Hill Station",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0032.jpg",
+   "CAPTION": "Victoria River Crossing, Buchanan Highway",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0243.jpg",
+   "CAPTION": "Boronia filicifolia",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "DSC_0300.jpg",
+   "CAPTION": "Acacia amanda",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2015
+ },
+ {
+   "FILENAME": "DSC_0397.jpg",
+   "CAPTION": "Camping at Gunlom, Kakadu",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0430.jpg",
+   "CAPTION": "Acacia tolmerensis",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0436.jpg",
+   "CAPTION": "Collecting Fuirena ciliaris, Howard River",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0490.jpg",
+   "CAPTION": "Pressing voucher specimens, Victoria River Gorge",
+   "PHOTOGRAPHER": "Ewyn Carter",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0515.jpg",
+   "CAPTION": "Rhynchosia filiformis",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0526.jpg",
+   "CAPTION": "Camping at Jasper Gorge",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSC_0545.jpg",
+   "CAPTION": "Grevillea longicuspis",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0621.jpg",
+   "CAPTION": "Collecting Eucalyptus gigantangion",
+   "PHOTOGRAPHER": "Anthony Fuller",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0728.jpg",
+   "CAPTION": "Hibiscus petherickii",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0774.jpg",
+   "CAPTION": "Hibbertia tricornis",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0803.jpg",
+   "CAPTION": "Andrew & Anthony (Parks Australia) collecting Boronia prolixa",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0807.jpg",
+   "CAPTION": "Boronia prolixa",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0832.jpg",
+   "CAPTION": "Brachychiton sp. Wangi",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0840.jpg",
+   "CAPTION": "Madison Clonan collecting Hibiscus petherickii",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSC_0910.jpg",
+   "CAPTION": "Grevillea sp. Magela Creek",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSCN0020.jpg",
+   "CAPTION": "Decaschistia byrnesii subsp. byrnesii",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "DSCN0459.jpg",
+   "CAPTION": "Traversing a dry gully near Jasper Gorge",
+   "PHOTOGRAPHER": "Marj King",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "DSCN0511.jpg",
+   "CAPTION": "Melaleuca triumphalis",
+   "PHOTOGRAPHER": "Marj King",
+   "CATEGORY": "Plants",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "Eriachne_basedowii.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Grevillea_Magela_Creek.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Hildegardia_australiensis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "Hydriastele_ramsayi.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "IMAG1308.jpg",
+   "CAPTION": "Collecting Acacia amentifera",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ },
+ {
+   "FILENAME": "Livistona_humilis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "Melaleuca_triumphalis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2019
+ },
+ {
+   "FILENAME": "P5240034.jpg",
+   "CAPTION": "Melaleuca stipitata",
+   "PHOTOGRAPHER": "Tom North",
+   "CATEGORY": "Plants",
+   "YEAR": 2015
+ },
+ {
+   "FILENAME": "P8140310.jpg",
+   "CAPTION": "Collecting Calytrix inopinata",
+   "PHOTOGRAPHER": "Tom North",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2015
+ },
+ {
+   "FILENAME": "Rhynchosia_filiformis.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Sida_Victoria_River.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Tephrosia_carriemichelliae.png",
+   "CAPTION": "Microscope image",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Triumfetta_Fleshy.png",
+   "CAPTION": "Microscope image (whole fruit)",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Seeds",
+   "YEAR": 2017
+ },
+ {
+   "FILENAME": "Goodenia_quadrifida.jpg",
+   "CAPTION": "Goodenia quadrifida",
+   "PHOTOGRAPHER": "Ben Wirf",
+   "CATEGORY": "Plants",
+   "YEAR": 2016
+ },
+ {
+   "FILENAME": "DSCN0486.jpg",
+   "CAPTION": "Landing in Victoria River Gorge",
+   "PHOTOGRAPHER": "Marj King",
+   "CATEGORY": "Fieldwork",
+   "YEAR": 2018
+ }
+]

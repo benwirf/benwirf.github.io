@@ -1,0 +1,322 @@
+<!DOCTYPE: html>
+
+<html>
+<head>
+	<title>Seed Bank Partnership</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		//alert('Working');
+	</script>
+</head>
+
+<body>
+<img class="banner" src="banner/Banner2.png">
+
+<nav class="top-nav" id="navBar">
+  <a href="index.html">Home</a>
+  <a href="species_search.html">Search</a>
+	<div class="dropdown">
+		<button class="dropbtn">Browse
+			<img src="icons/dwn_arrA1.png" height="10px" width="15px"></img>
+		</button>
+		<div class="dropdown-content">
+			<a href="browse_families.html">Browse Families</a>
+			<a href="browse_genera.html">Browse Genera</a>
+		</div>
+	</div>
+  <a href="gallery.html" target="_blank">Image Gallery</a>
+  <a href="http://eflora.nt.gov.au/home" target="_blank">NT Flora</a>
+  <a class="icon" href="#">&#9776;</a>
+</nav>
+
+<div class="content">
+<h2 class="heading">
+	Conservation Seed Banking Partnerships
+</h2>
+<p>
+	George Brown Darwin Botanic Gardens Seed Bank is part of a national network of conservation seed banks
+	working together to contribute to a global initiative of safeguarding ex situ seed collections of the
+	world's bankable flora, led by the Millennium Seed Bank Partnership Kew.
+</p>
+
+<p>
+	Seed Bank Partnerships</br></br>
+	
+	<ul>
+	<li>
+	<img class="logo" src="logos/msbp-logo.png"></img>
+	<a href="https://www.kew.org/science/our-science/projects/banking-the-worlds-seeds" target="_blank">Millennium Seed Bank Partnership</a>
+	</li>
+	<li>
+	<img class="logo" src="logos/asbp-logo.png"></img>
+	<a href="https://www.seedpartnership.org.au/" target="_blank">Australian Seed Bank Partnership</a>
+	</li>
+	</ul>
+</p></br>
+
+<p>	
+	Australian Conservation Seed Banking Partners<br>
+	
+	<ul>
+		<li>
+		<img class="logo" src="logos/plantbank-logo.png"></img>
+		<a href="https://www.rbgsyd.nsw.gov.au/Science/Australian-plantbank" target="_blank">Australian PlantBank</a>
+		</li>
+		<li>
+		<img class="logo" src="logos/anbg_logo.gif"></img>
+		<a href="http://www.anbg.gov.au/gardens/living/seedbank/index.html" target="_blank">National Seed Bank</a>
+		</li>
+		<li>
+		<img class="logo" src="logos/bgsa-logo.png"></img>
+		<a href="https://www.botanicgardens.sa.gov.au/science-conservation/seed-conservation-centre" target="_blank">SA Seed Conservation Centre</a>
+		</li>
+		<li>
+		<img class="logo" src="logos/rbgvic-logo.png"></img>
+		<a href="https://www.rbg.vic.gov.au/science/projects/victorian-conservation-seedbank" target="_blank">Victorian Conservation Seed Bank</a>
+		</li>
+		<li>
+		<img class="logo" src="logos/bgpa-logo.png"></img>
+		<a href="https://www.bgpa.wa.gov.au/about-us/information/research/69-wa-seed-technology-centre" target="_blank">WA Seed Technology Centre</a>
+		</li>
+		<li>
+		<img class="logo" src="logos/paws-logo.png"></img>
+		<a href="https://www.dpaw.wa.gov.au/about-us/science-and-research/plant-conservation-research/124-threatened-flora-seed-centre#:~:text=The%20Threatened%20Flora%20Seed%20Centre%20is%20Western%20Australia's%20principal%20seed,Western%20Australian%20Conservation%20Science%20Centre." target="_blank">WA Threatened Flora Seed Centre</a>
+		</li>
+		<li><a href="#">QLD Seed Bank</a></li>
+		<li><a href="#">Tas Seed Bank</a></li>
+	</ul>
+	
+</p>
+
+
+</div>
+
+<footer>
+	<p>© Ben Wirf 2020</p>
+</footer>
+
+<script>
+var barIcon = document.getElementsByClassName("icon")[0];
+barIcon.addEventListener("click", showResponsiveMenu);
+
+function showResponsiveMenu(){
+	var x = document.getElementById("navBar");
+	x.classList.toggle("top-nav-responsive");
+}
+
+</script>
+
+<style>
+body, html{
+	padding: 0;
+	margin: 0;
+}
+
+.banner{
+	width: 100%;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+}
+
+/*************************************Navbar style************************************/
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 18px;
+	max-height: 15px;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.top-nav {
+  background-color: black;
+  overflow: hidden;
+	font-family: Sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.top-nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-family: Sans-serif;
+  font-size: 17px;
+}
+
+/* Use active class selector to highlight the current page */
+.active {
+  background-color: #b4dbc6;
+	color: black !important;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.top-nav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.top-nav a:hover, .dropdown:hover .dropbtn {
+  background-color: #888;
+  color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links */
+@media(max-width: 600px) {
+  .top-nav a, .dropdown .dropbtn {
+    display: none;
+  }
+  .top-nav a.icon {
+    float: right;
+    display: block;
+		max-height: 19px;
+  }
+
+  .top-nav-responsive {position: relative;}
+  .top-nav-responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .top-nav-responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .top-nav-responsive .dropdown {float: none;}
+  .top-nav-responsive .dropdown-content {position: relative;}
+  .top-nav-responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/*******************************End of navbar style************************************/
+
+.content {
+	padding: 50px;
+  flex: 1 0 auto;
+	text-align: center;
+	justify-content: center;
+	font-family: sans-serif;
+}
+
+.heading{
+	color: #661013;
+	margin-bottom: 50px;
+	margin-top: 0;
+}
+
+ul{
+	margin: auto;
+	padding: 10px;
+	border: 1px solid grey;
+	text-align: left;
+	width: 35%;
+	list-style: none;
+}
+
+.logo{
+	width: 90px;
+	margin-right: 20px;
+}
+
+.top-nav:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+ul li {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.content:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+
+footer{
+	flex-shrink: 0;
+	text-align: center;
+}
+
+</style>
+
+</body>
+
+</html>
