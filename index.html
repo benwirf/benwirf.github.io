@@ -93,15 +93,45 @@ var myRow = document.getElementById("image-row");
 var imageRoll = setInterval(rotateImages, 3500);
 var counter = 1;
 
+var images = [];
+
 barIcon.addEventListener("click", showResponsiveMenu);
+
+preload(
+    "./slideshow_images/img1.jpg",
+    "./slideshow_images/img2.jpg",
+    "./slideshow_images/img3.jpg",
+    "./slideshow_images/img4.jpg",
+    "./slideshow_images/img5.jpg",
+    "./slideshow_images/img6.jpg",
+    "./slideshow_images/img7.jpg",
+    "./slideshow_images/img8.jpg",
+    "./slideshow_images/img9.jpg",
+    "./slideshow_images/img10.jpg",
+    "./slideshow_images/img11.jpg",
+    "./slideshow_images/img12.jpg",
+    "./slideshow_images/img13.jpg",
+    "./slideshow_images/img14.jpg",
+    "./slideshow_images/img15.jpg",
+    "./slideshow_images/img16.jpg",
+    "./slideshow_images/img17.jpg",
+    "./slideshow_images/img18.jpg",
+    "./slideshow_images/img19.jpg"
+)
 
 rotateImages();
 
+function preload() {
+	for (var i = 0; i < arguments.length; i++) {
+			images[i] = new Image();
+			images[i].src = preload.arguments[i];
+	}
+}
 
 function rotateImages(){
 	var content = "";
 	idx = counter;		
-	for(i=1; i<5; i++){
+	for(var i=1; i<5; i++){
 		if(idx == 20){
 			idx = 1;
 		}
