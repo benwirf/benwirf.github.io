@@ -3462,7 +3462,7 @@ var data = [
    "DISTRIBUTION": "Known from the vicinity of Mount Bundey with a single collection from southern Kakadu.",
    "TPWCA": "Data Deficient",
    "EPBC": "",
-   "IMAGELIST": "CB_0578.jpg;CB_0580.jpg;CB_0583.jpg",
+   "IMAGELIST": "cb0578.jpg;cb0580.jpg;cb0583.jpg",
    "CAPTION": "Habit;Whole plant;Leaves & flowers",
    "ATTRIBUTION": "Ben Wirf;Ben Wirf;Ben Wirf",
    "IMPORTID": 61
