@@ -53,7 +53,13 @@
 	var barIcon = document.getElementsByClassName("icon")[0];
 	barIcon.addEventListener("click", showResponsiveMenu);
 	
+	taxonInfo.sort(sortAscending);
+	
 	getUniqueFamilyNames();
+	
+	function sortAscending(a, b){
+		return a[family].localeCompare(b[family]);
+	}
 	
 	function getUniqueFamilyNames(){
 		for(i=0; i<taxonInfo.length; i++){
