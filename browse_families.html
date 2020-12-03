@@ -4,6 +4,7 @@
 
 <head>
 <title>Browse By Family</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="taxon_info.json" type="text/javascript"></script>
 <script>
 	//alert('page working')
@@ -316,6 +317,12 @@ h2{
 	.family-lists{
 		list-style: none;
 		columns: 2;
+	}
+}
+
+@media (max-width: 650px){
+	#browse-content{
+		width: 80%;
 	}
 }
 

@@ -4,6 +4,7 @@
 
 <head>
 <title>Browse By Genus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="taxon_info.json" type="text/javascript"></script>
 <script>
 	//alert('page working')
@@ -303,10 +304,16 @@ h2{
 	font: 18px Verdana, sans-serif;
 }
 
-@media(min-width: 700px){
+@media(min-width: 750px){
 	.genus-lists{
 		list-style: none;
 		columns: 2;
+	}
+}
+
+@media (max-width: 800px){
+	#browse-content{
+		width: 80%;
 	}
 }
 
